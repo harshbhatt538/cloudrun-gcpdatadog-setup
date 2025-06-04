@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+        admission.datadoghq.com/enabled: "true"
+        tags.datadoghq.com/env: "prod"
+        tags.datadoghq.com/service: "product-service"
+    spec:
+      containers:
+      - name: product-service
+        image: harshbhatt12/product-service:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        volumeMounts:
+        - name: datadog-socket
+          mountPath: /var/run/datadog
+      volumes:
+      - name: datadog-socket
+        hostPath:
+          path: /var/run/datadog/
+          type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product-service
+  ports:
+  - port: 8081
+    targetPort: 8081
+  type: ClusterIP

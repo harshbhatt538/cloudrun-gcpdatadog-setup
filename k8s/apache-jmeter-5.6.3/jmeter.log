@@ -1,0 +1,54 @@
+2025-06-02 18:09:19,277 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2025-06-02 18:09:19,312 INFO o.a.j.JMeter: Loading user properties from: /home/bhattharsh538/microservices-demo/k8s/apache-jmeter-5.6.3/bin/user.properties
+2025-06-02 18:09:19,313 INFO o.a.j.JMeter: Loading system properties from: /home/bhattharsh538/microservices-demo/k8s/apache-jmeter-5.6.3/bin/system.properties
+2025-06-02 18:09:19,325 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-06-02 18:09:19,325 INFO o.a.j.JMeter: Version 5.6.3
+2025-06-02 18:09:19,325 INFO o.a.j.JMeter: java.version=17.0.15
+2025-06-02 18:09:19,325 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: os.name=Linux
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: os.arch=amd64
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: os.version=6.6.87+
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: java.awt.headless=null
+2025-06-02 18:09:19,326 INFO o.a.j.JMeter: Max memory     =1916796928
+2025-06-02 18:09:19,327 INFO o.a.j.JMeter: Available Processors =2
+2025-06-02 18:09:19,340 INFO o.a.j.JMeter: Default Locale=English (United States)
+2025-06-02 18:09:19,341 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2025-06-02 18:09:19,341 INFO o.a.j.JMeter: JMeterHome=/home/bhattharsh538/microservices-demo/k8s/apache-jmeter-5.6.3
+2025-06-02 18:09:19,342 INFO o.a.j.JMeter: user.dir  =/home/bhattharsh538/microservices-demo/k8s/apache-jmeter-5.6.3
+2025-06-02 18:09:19,342 INFO o.a.j.JMeter: PWD       =/home/bhattharsh538/microservices-demo/k8s/apache-jmeter-5.6.3
+2025-06-02 18:09:19,342 INFO o.a.j.JMeter: IP: 10.88.0.4 Name: cs-1096495286418-default FullName: cs-1096495286418-default
+2025-06-02 18:09:19,368 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2025-06-02 18:09:19,656 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2025-06-02 18:09:20,057 ERROR o.a.j.JMeter: An error occurred: 
+java.awt.HeadlessException: 
+No X11 DISPLAY variable was set,
+but this program performed an operation which requires it.
+	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:164) ~[?:?]
+	at java.desktop/java.awt.Window.<init>(Window.java:553) ~[?:?]
+	at java.desktop/java.awt.Frame.<init>(Frame.java:428) ~[?:?]
+	at java.desktop/java.awt.Frame.<init>(Frame.java:393) ~[?:?]
+	at java.desktop/javax.swing.SwingUtilities$SharedOwnerFrame.<init>(SwingUtilities.java:1919) ~[?:?]
+	at java.desktop/javax.swing.SwingUtilities.getSharedOwnerFrame(SwingUtilities.java:1995) ~[?:?]
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:273) ~[?:?]
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:207) ~[?:?]
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:155) ~[?:?]
+	at org.apache.jmeter.SplashScreen.<init>(SplashScreen.java:52) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeterGuiLauncher.startGuiInternal(JMeterGuiLauncher.kt:87) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeterGuiLauncher.access$startGuiInternal(JMeterGuiLauncher.kt:47) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeterGuiLauncher$startGui$1$1.invokeSuspend(JMeterGuiLauncher.kt:67) ~[ApacheJMeter_core.jar:5.6.3]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) ~[kotlin-stdlib-1.9.22.jar:1.9.22-release-704]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108) ~[kotlinx-coroutines-core-jvm-1.7.3.jar:?]
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318) ~[?:?]
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773) ~[?:?]
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720) ~[?:?]
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714) ~[?:?]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86) ~[?:?]
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) ~[?:?]
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90) ~[?:?]

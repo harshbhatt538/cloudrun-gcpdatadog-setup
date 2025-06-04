@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jmeter
+spec:
+  containers:
+  - name: jmeter
+    image: harshbhatt12/jmeter:latest
+    command: ["sleep", "infinity"]
+    volumeMounts:
+    - name: test-plan
+      mountPath: "/apache-jmeter-5.6.3/microservices-test.jmx"
+      subPath: microservices-test.jmx
+  volumes:
+  - name: test-plan
+    configMap:
+      name: jmeter-test-plan

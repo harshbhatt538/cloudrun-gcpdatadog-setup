@@ -1,0 +1,53 @@
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+        admission.datadoghq.com/enabled: "true"
+        tags.datadoghq.com/env: "prod"
+        tags.datadoghq.com/service: "user-service"
+    spec:
+      containers:
+      - name: user-service
+        image: harshbhatt12/user-service:latest
+        ports:
+        - containerPort: 8083
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        volumeMounts:
+        - name: datadog-socket
+          mountPath: /var/run/datadog
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+      volumes:
+      - name: datadog-socket
+        hostPath:
+          path: /var/run/datadog/
+          type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: user-service
+  ports:
+  - port: 8083
+    targetPort: 8083
+  type: ClusterIP
