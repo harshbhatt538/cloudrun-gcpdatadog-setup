@@ -1,4 +1,5 @@
 com/example/userservice/UserServiceApplication.class
 com/example/userservice/UserRepository.class
 com/example/userservice/User.class
+com/example/userservice/ResponseWrapper.class
 com/example/userservice/UserController.class

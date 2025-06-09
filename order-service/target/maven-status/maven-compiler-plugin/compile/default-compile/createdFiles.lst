@@ -3,4 +3,5 @@ com/example/orderservice/User.class
 com/example/orderservice/Product.class
 com/example/orderservice/Order.class
 com/example/orderservice/OrderController.class
+com/example/orderservice/ResponseWrapper.class
 com/example/orderservice/OrderRepository.class

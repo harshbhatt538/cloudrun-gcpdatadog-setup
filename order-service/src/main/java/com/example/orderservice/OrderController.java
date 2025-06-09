@@ -1,27 +1,50 @@
 package com.example.orderservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import io.opentracing.Span;
+import io.opentracing.util.GlobalTracer;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+
     @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
     private RestTemplate restTemplate;
 
-    // Existing POST endpoint
+    @Value("${ENVIRONMENT:unknown}")
+    private String environment;
+
+    @Value("${PRODUCT_SERVICE_URL:http://product-service:8081}")
+    private String productServiceUrl;
+
+    @Value("${USER_SERVICE_URL:http://user-service:8083}")
+    private String userServiceUrl;
+
     @PostMapping
-    public ResponseEntity<Void> createOrder(@RequestBody Order order) {
+    public ResponseEntity<ResponseWrapper<Void>> createOrder(@RequestBody Order order) {
+        logger.info("Creating order with id {} in environment: {}", order.getId(), environment);
+
+        // Add environment to Datadog trace
+        Span activeSpan = GlobalTracer.get().activeSpan();
+        if (activeSpan != null) {
+            activeSpan.setTag("environment", environment);
+        }
+
         // Fetch product
         Product product = restTemplate.getForObject(
-            "http://product-service:8081/products/" + order.getProductId(),
+            productServiceUrl + "/products/" + order.getProductId(),
             Product.class
         );
         if (product == null) {
@@ -30,7 +53,7 @@ public class OrderController {
 
         // Fetch user
         User user = restTemplate.getForObject(
-            "http://user-service:8083/users/" + order.getUserId(),
+            userServiceUrl + "/users/" + order.getUserId(),
             User.class
         );
         if (user == null) {
@@ -39,13 +62,22 @@ public class OrderController {
 
         // Save order
         orderRepository.save(order);
-        return ResponseEntity.ok().build();
+        ResponseWrapper<Void> response = new ResponseWrapper<>(null, environment);
+        return ResponseEntity.ok(response);
     }
 
-    // New GET endpoint to retrieve all orders
     @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders() {
+    public ResponseEntity<ResponseWrapper<List<Order>>> getAllOrders() {
+        logger.info("Fetching all orders in environment: {}", environment);
+
+        // Add environment to Datadog trace
+        Span activeSpan = GlobalTracer.get().activeSpan();
+        if (activeSpan != null) {
+            activeSpan.setTag("environment", environment);
+        }
+
         List<Order> orders = orderRepository.findAll();
-        return ResponseEntity.ok(orders);
+        ResponseWrapper<List<Order>> response = new ResponseWrapper<>(orders, environment);
+        return ResponseEntity.ok(response);
     }
 }

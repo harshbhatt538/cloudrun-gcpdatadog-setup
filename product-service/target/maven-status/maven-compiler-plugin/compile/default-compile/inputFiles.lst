@@ -2,3 +2,4 @@
 /home/bhattharsh538/microservices-demo/product-service/src/main/java/com/example/productservice/ProductServiceApplication.java
 /home/bhattharsh538/microservices-demo/product-service/src/main/java/com/example/productservice/ProductRepository.java
 /home/bhattharsh538/microservices-demo/product-service/src/main/java/com/example/productservice/Product.java
+/home/bhattharsh538/microservices-demo/product-service/src/main/java/com/example/productservice/ResponseWrapper.java

@@ -1,4 +1,5 @@
 /home/bhattharsh538/microservices-demo/user-service/src/main/java/com/example/userservice/User.java
+/home/bhattharsh538/microservices-demo/user-service/src/main/java/com/example/userservice/ResponseWrapper.java
 /home/bhattharsh538/microservices-demo/user-service/src/main/java/com/example/userservice/UserServiceApplication.java
 /home/bhattharsh538/microservices-demo/user-service/src/main/java/com/example/userservice/UserController.java
 /home/bhattharsh538/microservices-demo/user-service/src/main/java/com/example/userservice/UserRepository.java
